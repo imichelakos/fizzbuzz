@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/matchilling/fizzbuzz.svg?branch=master)](https://travis-ci.org/matchilling/fizzbuzz)
+
 # FizzBuzz
 
 ## License
