@@ -68,6 +68,23 @@ describe(`${pkg.name}/Fizz`, () => {
     });
   });
 
+  /** @test {Fizz#produceReport} */
+  describe('#produceReport', () => {
+    it('Throw a type error if argument is not an instance of array.', () => {
+      assert.throws(() => Fizz.produceReport(1), TypeError, 'Argument "arr" must be an instance of "Array".');
+    });
+
+    it('Produces a report from the given', () => {
+      assert.deepEqual(Fizz.produceReport(Fizz.buzz(numberGenerator(20))), {
+        buzz     : 3,
+        fizz     : 4,
+        fizzbuzz : 1,
+        integer  : 10,
+        lucky    : 2
+      });
+    });
+  });
+
   /** @test {Fizz#write} */
   describe('#write', () => {
     it('Throw a type error if argument is not an instance of array.', () => {
@@ -76,6 +93,19 @@ describe(`${pkg.name}/Fizz`, () => {
 
     it('Write to standard output', () => {
       assert.isTrue(Fizz.write(['1', '2']));
+    });
+  });
+
+  /** @test {Fizz#writeReport} */
+  describe('#writeReport', () => {
+    it('Throw a type error if argument is not an instance of object.', () => {
+      assert.throws(() => Fizz.writeReport(1), TypeError, 'Argument "report" must be an instance of "Object".');
+    });
+
+    it('Write report to standard output', () => {
+      assert.isTrue(Fizz.writeReport(
+        Fizz.produceReport(Fizz.buzz(numberGenerator(20)))
+      ));
     });
   });
 
