@@ -22,8 +22,12 @@ describe(`${pkg.name}/Fizz`, () => {
       assert.throws(() => Fizz.buzz([1, 2, 'x']), TypeError, 'Non integer element found at position "2".');
     });
 
+    it('Should return an array and substitude any element with the word "lucky" if it is contains a 3.', () => {
+      assert.deepEqual(Fizz.buzz([3]), ['lucky']);
+    });
+
     it('Should return an array and substitude any element with the word "fizz" if it is a multiple of 3.', () => {
-      assert.deepEqual(Fizz.buzz([3]), ['fizz']);
+      assert.deepEqual(Fizz.buzz([27]), ['fizz']);
     });
 
     it('Should return an array and substitude any element with the word "buzz" if it is a multiple of 5.', () => {
@@ -42,7 +46,7 @@ describe(`${pkg.name}/Fizz`, () => {
       assert.deepEqual(Fizz.buzz(numberGenerator(20)), [
         1,
         2,
-        'fizz',
+        'lucky',
         4,
         'buzz',
         'fizz',
@@ -52,7 +56,7 @@ describe(`${pkg.name}/Fizz`, () => {
         'buzz',
         11,
         'fizz',
-        13,
+        'lucky',
         14,
         'fizzbuzz',
         16,

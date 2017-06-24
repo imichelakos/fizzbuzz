@@ -16,6 +16,7 @@ class Fizz {
     if (!Array.isArray(numbers)) throw new TypeError('Argument "numbers" must be an instance of "Array".');
     return numbers.map((number, i) => {
       if (!Number.isInteger(number)) throw new TypeError(`Non integer element found at position "${i}".`);
+      if (-1 !== number.toString().indexOf('3')) return 'lucky';
       if (0 === number % 15) return 'fizzbuzz';
       if (0 === number % 3) return 'fizz';
       if (0 === number % 5) return 'buzz';
